@@ -1,64 +1,72 @@
 import { Link } from 'react-router-dom';
 
 export function LandingPage() {
+  const categories = ["Technology", "Lifestyle", "Travel", "Food"];
+
   return (
-    <div className="min-h-screen bg-gradient-to-r from-blue-500 to-purple-600">
-      <header className="container mx-auto px-4 py-6 flex justify-between items-center">
-        <div className="text-white text-2xl font-bold flex items-center">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 mr-2" viewBox="0 0 20 20" fill="currentColor">
-            <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z" />
-            <path fillRule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clipRule="evenodd" />
-          </svg>
-          EasyWallet
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-pink-50">
+      <header className="bg-white bg-opacity-90 backdrop-filter backdrop-blur-lg shadow-sm fixed top-0 left-0 right-0 z-10">
+        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+          <div className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
+            BlogHub
+          </div>
+          <nav>
+            <Link to="/signin" className="text-gray-600 hover:text-gray-800 mr-4 transition duration-300">Sign In</Link>
+            <Link to="/signup" className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-2 rounded-full hover:from-purple-600 hover:to-pink-600 transition duration-300 shadow-md hover:shadow-lg">Sign Up</Link>
+          </nav>
         </div>
-        <nav>
-          <ul className="flex space-x-4 text-white">
-            <li><a href="#features" className="hover:text-blue-200">Features</a></li>
-            <li><a href="#about" className="hover:text-blue-200">About</a></li>
-            <li><a href="#contact" className="hover:text-blue-200">Contact</a></li>
-          </ul>
-        </nav>
       </header>
 
-      <main className="container mx-auto px-4 py-16">
-        <section className="text-center text-white mb-16">
-          <h1 className="text-5xl font-bold mb-4">Manage Your Money with Ease</h1>
-          <p className="text-xl mb-8">EasyWallet is your all-in-one solution for secure and convenient financial management.</p>
-          <div className="flex justify-center space-x-4">
-            <Link to="/signin" className="bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-blue-100 transition duration-300">Sign In</Link>
-            <Link to="/signup" className="bg-transparent border-2 border-white text-white px-6 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition duration-300">Sign Up</Link>
-          </div>
+      <main className="container mx-auto px-4 pt-24 pb-12">
+        <section className="text-center mb-20">
+          <h1 className="text-5xl font-bold text-gray-900 mb-6">Share Your Story with the World</h1>
+          <p className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">Join our vibrant community of writers and readers. Unleash your creativity and inspire others with your unique perspective.</p>
+          <Link to="/signup" className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-10 py-4 rounded-full font-semibold hover:from-purple-600 hover:to-pink-600 transition duration-300 shadow-md hover:shadow-lg text-lg">
+            Start Your Journey
+          </Link>
         </section>
 
-        <section id="features" className="grid md:grid-cols-3 gap-8 mb-16">
+        <section className="grid md:grid-cols-3 gap-10 mb-20">
           {[
-            { title: "Secure Transactions", description: "Your financial data is protected with bank-level security.", icon: "🔒" },
-            { title: "Easy Money Transfer", description: "Send money to friends and family with just a few taps.", icon: "💸" },
-            { title: "Budget Tracking", description: "Keep your spending in check with our intuitive budgeting tools.", icon: "📊" }
+            { title: "Discover Stories", description: "Explore a diverse range of topics and perspectives from writers around the globe." },
+            { title: "Find Your Niche", description: "Connect with readers who share your passions and interests." },
+            { title: "Grow Your Audience", description: "Build a loyal following and engage with your readers in meaningful ways." }
           ].map((feature, index) => (
-            <div key={index} className="bg-white rounded-lg p-6 shadow-lg">
-              <div className="text-4xl mb-4">{feature.icon}</div>
-              <h2 className="text-xl font-semibold mb-2">{feature.title}</h2>
+            <div key={index} className="bg-white rounded-xl shadow-md p-8 transition duration-300 hover:shadow-xl transform hover:-translate-y-1">
+              <h3 className="text-2xl font-semibold text-gray-800 mb-4">{feature.title}</h3>
               <p className="text-gray-600">{feature.description}</p>
             </div>
           ))}
         </section>
 
-        <section id="about" className="text-white mb-16">
-          <h2 className="text-3xl font-bold mb-4">About EasyWallet</h2>
-          <p className="text-lg">EasyWallet was founded with a simple mission: to make managing your finances as easy as possible. Our team of financial experts and tech innovators have created a platform that simplifies every aspect of your financial life.</p>
+        <section className="mb-20">
+          <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">Explore Popular Categories</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {categories.map((category, index) => (
+              <Link key={index} to={`/category/${category.toLowerCase()}`} className="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition duration-300 transform hover:-translate-y-1">
+                <span className="text-xl font-medium text-gray-800">{category}</span>
+              </Link>
+            ))}
+          </div>
         </section>
 
-        <section id="contact" className="text-white">
-          <h2 className="text-3xl font-bold mb-4">Contact Us</h2>
-          <p className="text-lg mb-4">Have questions? Our support team is here to help.</p>
-          <a href="mailto:support@easywallet.com" className="bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-blue-100 transition duration-300">Email Support</a>
+        <section className="text-center mb-20">
+          <h2 className="text-3xl font-bold text-gray-800 mb-6">Ready to Share Your Voice?</h2>
+          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">Join BlogHub today and become part of a community that values your unique perspective.</p>
+          <Link to="/signup" className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-3 rounded-full font-semibold hover:from-purple-600 hover:to-pink-600 transition duration-300 shadow-md hover:shadow-lg">
+            Create Your Account
+          </Link>
         </section>
       </main>
 
-      <footer className="bg-blue-800 text-white py-8">
+      <footer className="bg-gray-800 text-white py-10">
         <div className="container mx-auto px-4 text-center">
-          <p>&copy; 2023 EasyWallet. All rights reserved.</p>
+          <p className="mb-4">&copy; 2023 BlogHub. All rights reserved.</p>
+          <div className="flex justify-center space-x-4">
+            <a href="#" className="hover:text-purple-400 transition duration-300">Terms</a>
+            <a href="#" className="hover:text-purple-400 transition duration-300">Privacy</a>
+            <a href="#" className="hover:text-purple-400 transition duration-300">Contact</a>
+          </div>
         </div>
       </footer>
     </div>
